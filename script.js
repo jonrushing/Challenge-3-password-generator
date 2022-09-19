@@ -4,6 +4,20 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+//pick a random point in any of the user selection arrays
+function getRandomInt (min, max) {
+  if (!max) {
+    max = min
+    min = 0
+  }
+  var random = Math.random()
+  return Math.floor(min*(1 - random) + random*max)
+
+} 
+
+function getRandomChar(list) {
+  return list[getRandomInt(0, list.lenth -1)]
+} 
 
 function generatePassword() {
 
@@ -36,36 +50,37 @@ function generatePassword() {
     var symbollist = ["!","@","#","$","%","^","&","*","-","+","?","."]
 
     var userSelection = []
-  
-
+    
     
 
     if (inputLowerCase === true) {
-      userSelection.push(lowercaselist[Math.floor(Math.random() * lowercaselist.length)])
+      userSelection.push(lowercaselist)//[Math.floor(Math.random() * lowercaselist.length)])
     }
 
     if (inputUperCase === true) {
-      userSelection.push(uppercaselist[Math.floor(Math.random() * uppercaselist.length)])
+      userSelection.push(uppercaselist)//[Math.floor(Math.random() * uppercaselist.length)])
     }
 
     if (inputNumber === true) {
-      userSelection.push(numberlist[Math.floor(Math.random() * numberlist.length)])
+      userSelection.push(numberlist)//[Math.floor(Math.random() * numberlist.length)])
     }
 
     if (inputSymbols === true) {
-      userSelection.push(symbollist[Math.floor(Math.random() * symbollist.length)])
+      userSelection.push(symbollist)//[Math.floor(Math.random() * symbollist.length)])
     }
 
+  
     
-    
-    var newpassword = "" 
+console.log(userSelection)
+
+ /* var newpassword = "" 
 
     for ( var i=0; i < passwordLength; i++) {
       userSelection[Math.floor(Math.random() * symbollist.length)]
       newpassword += userSelection
     }
+    */
     
-    console.log(newpassword)
 }
 
 
@@ -79,4 +94,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword); 
