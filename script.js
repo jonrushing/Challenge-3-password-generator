@@ -36,6 +36,34 @@ function generatePassword() {
     var symbollist = ["!","@","#","$","%","^","&","*","-","+","?","."]
 
     var userSelection = []
+    var noSelection = []
+
+    
+
+    if (inputLowerCase === true) {
+      userSelection.push(lowercaselist[Math.floor(Math.random() * lowercaselist.length)])
+    }
+
+    if (inputUperCase === true) {
+      userSelection.push(uppercaselist[Math.floor(Math.random() * uppercaselist.length)])
+    }
+
+    if (inputNumber === true) {
+      userSelection.push(numberlist[Math.floor(Math.random() * numberlist.length)])
+    }
+
+    if (inputSymbols === true) {
+      userSelection.push(symbollist[Math.floor(Math.random() * symbollist.length)])
+    }
+
+    var newpassword = ""
+    
+    for ( var i=0; i < passwordLength; i++) {
+      userSelection[Math.floor(Math.random() * symbollist.length)]
+      newpassword += userSelection
+    }
+    
+    console.log(newpassword)
 }
 
 
