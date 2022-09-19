@@ -23,10 +23,22 @@ function generatePassword() {
       window.alert(inputAlert)
       return
     }
-    
+ 
+    var inputLowerCase = window.confirm("Add lowercase letters to your password?")
+    var inputUperCase = window.confirm("Add uppercase letter to your password?")
+    var inputNumber = window.confirm("Add numbers to your password?")
+    var inputSymbols = window.confirm("Add symbols to your password?")
+
+
+    var lowercaselist = ["z","x","c","v","b","n","m","a","s","d","f","g","h","j","k","l","q","w","e","r","t","y","u","i","o","p"]
+    var uppercaselist = ["Z","X","C","V","B","N","M","A","S","D","F","G","H","J","K","L","Q","W","E","R","T","Y","U","I","O","P"]
+    var numberlist = ["1","2","3","4","5","6","7","8","9","0"]
+    var symbollist = ["!","@","#","$","%","^","&","*","-","+","?","."]
+
+    var userSelection = []
 }
 
-console.log(generatePassword)
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
