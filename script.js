@@ -36,7 +36,7 @@ function generatePassword() {
     var symbollist = ["!","@","#","$","%","^","&","*","-","+","?","."]
 
     var userSelection = []
-    var noSelection = []
+  
 
     
 
@@ -56,8 +56,10 @@ function generatePassword() {
       userSelection.push(symbollist[Math.floor(Math.random() * symbollist.length)])
     }
 
-    var newpassword = ""
     
+    
+    var newpassword = "" 
+
     for ( var i=0; i < passwordLength; i++) {
       userSelection[Math.floor(Math.random() * symbollist.length)]
       newpassword += userSelection
