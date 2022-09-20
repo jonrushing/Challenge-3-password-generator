@@ -4,6 +4,7 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+// function for for loop to randomly pick a value from a randomly selected array in userSelection array
 function randomInt(min, max){
   if(!max){
     max = min
@@ -12,7 +13,7 @@ function randomInt(min, max){
  var rand = Math.random()
  return Math.floor(min*(1 - rand) + rand*max)
 }
-// function to randomly pick a value from the randomly selected array in userSelection array
+
 function getRandomChar(list) {
   return list[randomInt(0, list.length)]
 }
@@ -26,6 +27,7 @@ function generatePassword() {
   //parseInt used to determine is user inputs a letter or number in prompt as well as if a number is less than or more than the requirements
   var passwordLength = parseInt(inputLength)
 
+  //alert message for improper parameters
   var inputAlert = "Please choose a number between 8-128"
 
     if (isNaN (passwordLength)) {
@@ -77,17 +79,22 @@ function generatePassword() {
       userSelection.push(symbollist)//[Math.floor(Math.random() * symbollist.length)])
     }
     
-    if (userSelection.lenth === 0) {
-      userSelection.push (uppercaselist || lowercaselist || numberlist || symbollist)
+    if (userSelection.length === 0) {
+      userSelection.push(numberlist)
     }
-    
+      
+    //string where generated password will end up
+    var yournewpassword = ""
+
+
     //loop used to grenerate how many random characters will be used in final password based on user input
     for (var i = 0; i < passwordLength; i++) {
       var randomList = getRandomChar(userSelection)
       var randomChar = getRandomChar(randomList)
-      
-console.log(randomChar)
+      yournewpassword += randomChar
     }
+    
+    return yournewpassword
 
     }
 
