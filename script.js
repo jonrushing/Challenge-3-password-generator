@@ -4,21 +4,6 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// function for for loop to randomly pick a value from a randomly selected array in userSelection array
-function randomInt(min, max){
-  if(!max){
-    max = min
-    min = 0
-}
- var rand = Math.random()
- return Math.floor(min*(1 - rand) + rand*max)
-}
-
-function getRandomChar(list) {
-  return list[randomInt(0, list.length)]
-}
-
-//the main function for randomizing user preferences 
 function generatePassword() {
 
   var inputLength = window.prompt("How long would you like your password? (Between 8-128 characters)")
@@ -56,47 +41,49 @@ function generatePassword() {
     var symbollist = ["!","@","#","$","%","^","&","*","-","+","?","."]
 
 
-    // empty array that will be filled with user's selection 
+    // empty array that will be filled with user's selection as well as the true modifier I needed for the for loop
     var userSelection = []
-    
 
-    /*statements used to determine what will go into userSelection based on user input. Originally each individual
-      element was going to be randomized then placed into userSelection but that failed to really randomize a unique 
-      password so instead the whole array was pushed to be randomized in the for loop*/
+    //had some problems with the math it was multiplying the user input with the number of true statements this var fixes that
+    var trueModifier = (0)
+
+
+      if (inputLowerCase === true) {trueModifier++
+        }
+
+      if (inputUperCase === true) {trueModifier++
+      }
+
+      if (inputNumber === true) {trueModifier++
+      }
+
+      if (inputSymbols === true) {trueModifier++
+      }
+      
+
+/*the main code for random generation. each selction is randomly generated (if selected), looped 
+  (depending on the user's prefrence), and placed into userSelection array*/
+  for (var i = 0; i < (passwordLength/trueModifier); i++) {
     if (inputLowerCase === true) {
-      userSelection.push(lowercaselist)//[Math.floor(Math.random() * lowercaselist.length)])
+      userSelection.push(lowercaselist[Math.floor(Math.random() * lowercaselist.length)])
     }
 
     if (inputUperCase === true) {
-      userSelection.push(uppercaselist)//[Math.floor(Math.random() * uppercaselist.length)])
+      userSelection.push(uppercaselist[Math.floor(Math.random() * uppercaselist.length)])
     }
 
     if (inputNumber === true) {
-      userSelection.push(numberlist)//[Math.floor(Math.random() * numberlist.length)])
+      userSelection.push(numberlist[Math.floor(Math.random() * numberlist.length)])
     }
 
     if (inputSymbols === true) {
-      userSelection.push(symbollist)//[Math.floor(Math.random() * symbollist.length)])
+      userSelection.push(symbollist[Math.floor(Math.random() * symbollist.length)])
+     
     }
-    
-    if (userSelection.length === 0) {
-      userSelection.push(numberlist)
-    }
-      
-    //string where generated password will end up
-    var yournewpassword = ""
-
-
-    //loop used to grenerate how many random characters will be used in final password based on user input
-    for (var i = 0; i < passwordLength; i++) {
-      var randomList = getRandomChar(userSelection)
-      var randomChar = getRandomChar(randomList)
-      yournewpassword += randomChar
-    }
-    
-    return yournewpassword
-
-    }
+  }
+  //the final generation combining all strings into one
+    return userSelection.join("")
+ }
 
     
 
