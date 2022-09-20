@@ -5,20 +5,19 @@
 var generateBtn = document.querySelector("#generate");
 
 //pick a random point in any of the user selection arrays
-function getRandomInt (min, max) {
-  if (!max) {
+
+function randomInt(min, max){
+  if(!max){
     max = min
     min = 0
-  }
-  var random = Math.random()
-  return Math.floor(min*(1 - random) + random*max)
-
-} 
+}
+ var rand = Math.random()
+ return Math.floor(min*(1 - rand) + rand*max)
+}
 
 function getRandomChar(list) {
-  return list[getRandomInt(0, list.lenth -1)]
-} 
-
+  return list[randomInt(0, list.length)]
+}
 function generatePassword() {
 
   var inputLength = window.prompt("How long would you like your password? (Between 8-128 characters)")
@@ -51,7 +50,7 @@ function generatePassword() {
 
     var userSelection = []
     
-    
+    console.log (userSelection)
 
     if (inputLowerCase === true) {
       userSelection.push(lowercaselist)//[Math.floor(Math.random() * lowercaselist.length)])
@@ -68,20 +67,18 @@ function generatePassword() {
     if (inputSymbols === true) {
       userSelection.push(symbollist)//[Math.floor(Math.random() * symbollist.length)])
     }
-
-  
     
-console.log(userSelection)
-
- /* var newpassword = "" 
-
-    for ( var i=0; i < passwordLength; i++) {
-      userSelection[Math.floor(Math.random() * symbollist.length)]
-      newpassword += userSelection
+    
+    for (var i = 0; i < passwordLength; i++) {
+      var randomList = getRandomChar(userSelection)
+      var randomChar = getRandomChar(randomList)
+      
+console.log(randomChar)
     }
-    */
+
+    }
+
     
-}
 
 
 // Write password to the #password input
